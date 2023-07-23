@@ -1,0 +1,205 @@
+@charset 'UTF-8';
+
+/* Common
+-------------------------------------------------- */
+h1 {font-size: 1.50rem; text-transform: capitalize;
+}
+h2 {font-size: 1.25rem;}
+
+body {
+    font-family: "Klee One";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.container {
+    width: 80%;
+    max-width: 1000px;
+    padding: 0 4%;
+}
+
+.h1-bottom {
+    font-weight: bold;
+    line-height: 1.5;
+    margin-bottom: 1.4rem;
+    text-align:center;
+    padding: 0.5rem 0rem;
+    border-bottom: 1px solid #111111;
+    font-size: 26px;
+}
+
+.code-frame, .it-MdContent .highlight {
+    background-color: var(--color-gray-110);
+    color: var(--color-gray-0);
+}
+
+
+.title-bottom {
+    font-weight: bold;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    padding: 0.2rem;
+    margin-bottom: 1.2rem;
+    font-size: 26px;
+    background: linear-gradient(transparent 70%, #FFFF99 10%);
+}
+
+.content-bottom {
+    line-height: 1.5;
+    margin-bottom: 2.0rem;
+}
+
+/* Header
+-------------------------------------------------- */
+#header {
+    border-bottom: solid 1px #555;
+    margin-bottom: 16px;
+    padding-bottom: 4px;
+}
+
+.title{
+    font-size: 2.5em;/* フォントサイズ */
+    font-weight: bold;/* フォント太さ */
+    padding: .5em .7em;
+    margin-bottom: 1em;
+    color: #010079;
+    text-shadow: 0 0 5px white;
+    border-left: solid 7px #010079;
+    background: -webkit-repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+    background: repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+    }
+
+title:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f303";
+    position: absolute;
+    padding: 0em;
+    color: white;
+    font-weight: 900;
+    left: -1.35em;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    }    
+    
+    .sample_h_21:before {
+    position: absolute;
+    content: "\f303";
+    font-family: "Font Awesome 5 Free";
+    padding: 0em;
+    font-weight: 900;
+    left: -1.5em;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: #ffffff;
+    }
+
+/* Article
+-------------------------------------------------- */
+
+.article{
+	display: inline-block;
+	border: solid 1px #454545;
+    margin-bottom: 30px;
+}
+.dateList {
+    list-style: none;
+    list-style-position: initial;
+    list-style-image: initial;
+    list-style-type: none;
+    color: rgba(0,0,0,.5);
+    margin-bottom: 5px;
+}
+#dateList__item {
+    display: inline-block;
+    text-align: left;
+    color: rgba(0,0,0,.5);
+    font-size: 1.2rem;
+    margin-right: 5px;
+    line-height: 1.5;
+}
+
+.heading-secondary {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+.heading {
+    display: block;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-weight: 700;
+}
+
+a:link {
+    color: #0000EE;
+    text-decoration: underline;
+   }
+   
+   a:visited {
+    color: #551A8B;
+    text-decoration: underline;
+   }
+
+   a:active {
+    color: #FF0000;
+    text-decoration: underline;
+}
+
+h3 {
+    font-size: 1.10rem;
+    margin-bottom: 4px;
+}
+
+p {
+    font-size: 1.2rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    margin-bottom: 1em;
+}
+        
+    
+
+
+/* Footer
+-------------------------------------------------- */
+#footer {
+    border-top: solid 1px #555;
+    text-align: center;
+    margin-top: 28px;
+    padding: 16px 0;
+}
+
+/* Mobile
+-------------------------------------------------- */
+@media (max-width: 600px) {
+    /* Common
+    -------------------------------------------------- */
+    .container {
+        width: 100%;
+    }
+    
+    /* Header
+    -------------------------------------------------- */
+    
+
+    /* Article
+    -------------------------------------------------- */
+    #main {
+        .article {
+            p {
+                -webkit-line-clamp: 3;
+            }
+        }
+    }
+
+    
+    /* Footer
+    -------------------------------------------------- */
+
+
+}
