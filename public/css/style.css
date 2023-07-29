@@ -87,7 +87,10 @@ a {
     display: flex;
     flex-direction: column;
     width: max-content;
+    color: #551A8B;
+    text-decoration: underline;
 }
+
 
 .c-card {
     display: flex;

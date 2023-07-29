@@ -10,15 +10,18 @@
     <main id="about">
         <h1>プロフィール</h1>
         <p>　エンジニア歴8年になります。watanabeと申します。<br>当サイトは、PHPのLaravelを中心に勉強するためにポートフォリオとして作成しました。<br>随時アップデートしていきますのでよろしくお願いします。</p>
+       
         <article id="profile">
             <img src="./img/sheep.jpg" alt="sheep.jpg" class="about_img">
 
             <h2 class="name">k.watanabe</h2>
             <ul>
-                <li>好き：コーヒー、お酒</li>
-                <li>趣味：フットサル、音楽、読書、映画</li>
-                <li>仕事：システムエンジニア</li>
+                <li>開発言語：PHP HTML CSS Javascript</li>
+                <li>フレームワーク：laravel  cakePHP  zend  スクラッチでの開発経験もあり</li>
+                <li>ツール：vscode git TeraTerm WinScp</li><br>
+                <li>gitHubはこちらになります。<a class="a_link" href="https://github.com/wata9876" target="_blank">https://github.com/wata9876</a><li>
             </ul>
+           
         </article>
     </main>
     @endsection    

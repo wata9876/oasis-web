@@ -17,9 +17,9 @@
         <p class="phrase phrase-secondary">
         {{$article->content}}    
         </p>
-        <div class="btn btn-right">
-            <a class="btn__link btn__link-normal" href="{{ route('article.show') }}">続きを読む</a>
+        <div class="btn btn-right"><?php var_dump($article->url); ?>
+            <a class="btn__link btn__link-normal" href="{{ $article->url }}">続きを読む</a>
         </div>
     @endforeach
-    <a href="{{ route('profile') }}">プロフィールに戻る</a>    
+    <di><p><a href="{{ route('profile') }}">プロフィールに戻る</a></p></div>
 @endsection
