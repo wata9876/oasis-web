@@ -9,6 +9,7 @@ class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * 
      */
     public function index()
     {
@@ -19,10 +20,12 @@ class ArticleController extends Controller
 
     /**
      * Display a listing of the resource.
+     * 
      */
     public function show()
     {
         //
+
         return view('article.show');
     }
 

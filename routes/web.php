@@ -25,8 +25,8 @@ Route::get('work', [PortfolioController::class, 'showWork'])->name('work');
 
 Route::get('article', [ArticleController::class, 'index'])->name('article');
 
-Route::get('/show1/{id}', [ArticleController::class, 'show'])->name('article.show1');
-Route::get('/show1{id}', [ArticleController::class, 'show'])->name('article.show2');
+Route::get('/show', [ArticleController::class, 'show'])->name('article.show1');
+Route::get('/show2', [ArticleController::class, 'show'])->name('article.show2');
 
 
 Route::get('/dashboard', function () {
