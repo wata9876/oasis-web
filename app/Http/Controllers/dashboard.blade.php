@@ -19,7 +19,7 @@
         </p>
         <div class="btn btn-right">
             <a class="btn__link btn__link-normal" href="{{ route($article->url) }}">続きを読む</a>
-        </div><br>
+        </div>
     @endforeach
     <a href="{{ route('profile') }}">プロフィールに戻る</a>    
 @endsection

@@ -19,4 +19,15 @@ class Article extends Model
         'content',
     ];
 
+    /**
+     * タイトル取得
+     *
+     * @var array<string, string>
+     */
+    public static function getTitle($id)
+    {
+        $title = Article::find($id, ['title', 'content']);
+        return $title;
+    }
+
 }

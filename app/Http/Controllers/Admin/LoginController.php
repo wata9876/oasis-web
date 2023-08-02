@@ -23,7 +23,7 @@ class LoginController extends Controller
     if (Auth::guard('admins')->user()) {
         return redirect()->route('admin.dashboard');
     }
-    return view('admin.login.login');
+    return view('admin.login.index');
   }
 
   //ログイン処理

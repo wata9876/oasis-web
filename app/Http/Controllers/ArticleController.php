@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ArticleController extends Controller
 {
@@ -22,11 +23,30 @@ class ArticleController extends Controller
      * Display a listing of the resource.
      * 
      */
-    public function show()
+    public function show1(): View
     {
-        //
+        return view('article.show1');
+    }
 
-        return view('article.show');
+    /**
+     * Display a listing of the resource.
+     * 
+     */
+    public function show2(): View
+    {
+        $article = Article::getTitle(2);
+        return view('article.show2', ['article' => $article]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     * 
+     */
+    public function show3(): View
+    {
+        $article = Article::getTitle(3);
+
+        return view('article.show3', ['article' => $article] );
     }
 
     /**
