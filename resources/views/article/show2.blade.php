@@ -18,7 +18,7 @@
 
     <h2 class="title-bottom">マルチ認証とは</h2>
     <div class="content-bottom">
-        <p>例えばECサイトでは商品や顧客情報などを管理する管理画面の他に、ユーザーの方でも会員登録をする際に認証機能が必要な場合がほとんどだと思います。<br><br>この場合は管理画面のログインとユーザーのログインで二つの認証機能が必要になります。<br><br>このように、ログイン機能を複数設けることがマルチ認証です。管理者を登録するためのAdminモデルと、一般ユーザーを登録するためのuserモデルでそれぞれテーブルを用意し、認証を持たせて管理することが出来ます。</p><br>
+        <p>例えばECサイトでは商品や顧客情報などを管理する管理画面の他に、ユーザーでも認証機能が備わっているケースがあります。<br><br>この場合は管理画面のログインとユーザーのログインで二つの認証機能が備わっていることになります。その仕組みを実現しようとすると、ユーザーはusersテーブル、管理者はadminsテーブルに登録して管理する方法が考えられます。<br><br>このように、テーブルをそれぞれに分けてログイン機能を複数設けることがマルチ認証です。</p>
         <p></p>
     </div>
 
@@ -34,7 +34,8 @@
 
     <h2 class="title-bottom">手順2：　マイグレーションファイルを編集する</h2>
     <div class="content-bottom">
-        <p>管理者を登録するAdminテーブルを作成するためにマイグレーションファイルを以下のように編集します。</p><br>
+        <p>管理者を登録するAdminテーブルを作成するためにマイグレーションファイルを以下のように編集します。もちろん必要に応じてカラムを追加します。</p><br>
+        <p>database/migrations/2023_07_18_165316_create_admins_table.php</p>
         <code>
 <ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
 <li style="background-color:#EEF;">&lt;?php</li>
@@ -71,18 +72,24 @@
 </ol></code>
     </div>
 
-    <h2 class="title-bottom">手順２　モデルクラスの作成</h2>
+    <h2 class="title-bottom">手順３　モデルクラスの作成</h2>
     <div class="content-bottom">
         <p>マイグレーションを実行し、Adminモデルクラスを作成する</p><br>
         <code>
 <ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#000;color:#FFF;">
 <li>$ php artisan migrate</li>
 </ol></code>
+        <p>ちなみにローカル環境ならロールバッグした上でマイグレーションしたい場合はこのコマンドで出来ます。</p>
+        <code>
+<ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#000;color:#FFF;">
+<li>php artisan migrate:refresh --seed</li>
+</ol></code>
     </div>
 
-    <h2 class="title-bottom">手順３　モデルクラスを認証用に編集する</h2>
+    <h2 class="title-bottom">手順４　モデルクラスを認証用に編集する</h2>
     <div class="content-bottom">
         <p>認証するためにAuthenticatableクラスを継承する。デフォルトではクラス名のextendsの箇所がModelとなっているので、ModelをAuthenticatableに変える。useすることも忘れずに。</p><br>
+        <p>app/Models/Admin.php</p>
         <code>
 <ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
 <li style="background-color:#EEF;">&lt;?php</li>
@@ -138,33 +145,38 @@
 </ol></code>
     </div>
 
-    <h2 class="title-bottom">手順3　ログインページの作成</h2>
+    <h2 class="title-bottom">手順５　ログインページの作成</h2>
     <div class="content-bottom">
-        <p>マルチ認証を実装するために管理ユーザー用とユーザー用の二つのログインページを用意します。簡素なので、後でAdminLTEやBreezeなどでデザインも工夫しようと思います。<p/>
+        <p>マルチ認証を実装するために管理者用とユーザー用の二つのログインページを用意します。簡素なので、後でAdminLTEやBreezeなどでデザインも工夫しようと思います。<p/>
         <div>
             <img src="./img/admin_login.png" alt="管理画面ログイン">
             <img src="./img/user_login.png" alt="ユーザーログイン">
         </div>
     </div>
     
-    <p>ルーティングはこのように管理者はadmin、ユーザーはauthで分けています。</p>
+    <p>ルーティングはこのように管理者はadmin、ユーザーはauthでファイルを分けています。</p>
     <p>route/admin.php</p>
     <code>
-<ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#000;color:#FFF;">
-<li>Route::prefix('admin')-&gt;group(function () {</li>
-<li>&nbsp;&nbsp;&nbsp;&nbsp;Route::get('login', [LoginController::class, 'index'])-&gt;name('admin.login.index');</li>
-</ol></code><br>
+<ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
+<li style="background-color:#EEF;">Route::prefix('admin')-&gt;group(function () {</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;Route::get('login', [LoginController::class, 'index'])-&gt;name('admin.login.index');</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;Route::post('login', [LoginController::class, 'login'])-&gt;name('admin.login.login');</li>
+</ol></code>
+    <br>
 
 <p>route/auth.php</p>
 <code>
-<ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#000;color:#FFF;">
-<li>Route::middleware('guest')-&gt;group(function () {</li>
-<li></li>
-<li>&nbsp;&nbsp;&nbsp;&nbsp;Route::get('login', [AuthenticatedSessionController::class, 'create'])</li>
-<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;name('login');</li>
-</ol></code><br>
+<ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
+<li style="background-color:#EEF;">Route::middleware('guest')-&gt;group(function () {</li>
+<li style="background-color:#EFF;"></li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;Route::get('login', [AuthenticatedSessionController::class, 'create'])</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;name('login');</li>
+<li style="background-color:#EEF;"></li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;Route::post('login', [AuthenticatedSessionController::class, 'store']);</li>
+</ol></code>
+<br>
 
-    <h2 class="title-bottom">手順４　コンフィグファイルの「ガード」と「プロバイダ」の設定</h2>
+    <h2 class="title-bottom">手順６　コンフィグファイルの「ガード」と「プロバイダ」の設定</h2>
     <div class="content-bottom">
         <p>マルチ認証するために、コンフィグでガードを設定します。ここがマルチ認証で重要な部分になります。</p><br>
         <p>config/auth.php</p>
@@ -212,7 +224,7 @@
         <p>guardsは後述しますが、認証するために使うkeyとなります。ここでproviderがadminの場合は上述したadminモデルを使って認証するという意味です。</p>
     </div>
 
-    <h2 class="title-bottom">手順５　コントローラー側で認証を制御する</h2>
+    <h2 class="title-bottom">手順７　コントローラー側で認証を制御する</h2>
     <div class="content-bottom">
         <p>コントローラー側で管理者とユーザーでそれぞれ認証をチェックする処理を記述します。</p><br>
         <p>Controllers/Admin/LoginController.php</p>
@@ -238,8 +250,24 @@
 <li style="background-color:#EFF;">&nbsp;&nbsp;}</li>
 </ol></code>
 
-    <p>7行目のguardの記述でログインページで入力したメールアドレスとパスワードがAdminモデルを介してテーブルに登録されているかどうかをチェックしています。</p>
-    <p>ユーザーの場合も先ほどconfigに定義したmembersをユーザー用のコントローラーにguardで指定すれば、Userモデルに対して認証のチェックを行えます。<p/>
+    <p>7行目のguardの記述でログインページで入力したメールアドレスとパスワードがAdminモデルを介してテーブルに登録されているかどうかをチェックしています。</p>    
+    <p>ユーザーの場合も先ほどconfigに定義したmembersをguardで指定すれば、Userモデルに対して認証のチェックを行えます。<p/>
+    <p>Controllers/Auth/AuthenticatedSessionController.php</p>
+    <code>
+<ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
+<li style="background-color:#EEF;">&nbsp;public function index(Request $request)</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;{  </li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (Auth::guard('members')-&gt;attempt($request-&gt;only(['email', 'password']))) {</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return redirect()-&gt;route('user.dashboard')-&gt;with([</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'login_msg' =&gt; 'ログインしました。',</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]);</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//ログインできなかったときに元のページに戻る</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return back()-&gt;withErrors([</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'login' =&gt; ['ログインに失敗しました'],</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]);</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+</ol></code>
     <p>ユーザーの場合はmembers、管理者の認証の場合はadminsを指定するだけですね。このやり方を応用すれば他のモデルクラスでも認証チェックが出来るようになります。そういった使い方がマルチ認証です。<p/>
     <code>
 <ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#000;color:#FFF;">

@@ -10,7 +10,7 @@
   <p>{{ $message }}</p>
   @enderror
 
-  <form method="POST" action="{{ route('admin.login.login')}}">
+  <form method="POST" action="{{ route('login.check')}}">
     @csrf
     <label>メールアドレス</label>
     <input type="email" name="email"><br>

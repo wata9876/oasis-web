@@ -13,7 +13,7 @@
     <h2 class="title-bottom">はじめに</h2>
     <div class="content-bottom">
         <p>{{ $article->content }}</p><br>
-        <p>参考記事：<a href="https://qiita.com/hinako_n/items/45a7232b0b0ed16bffc8" rel="nofollow noopener" target="_blank">Laravelsailを使ってLaravel9の環境構築を行う</a></p>
+        <p>参考記事：<a href="https://codelikes.com/laravel-seeder/" rel="nofollow noopener" target="_blank">LaravelでSeederを使う方法！(初期データを登録する)</a></P> 
     </div>
 
     <h2 class="title-bottom">手順１： seederファイルを作成する</h2>
@@ -110,7 +110,6 @@
 </ol></code>
         <p>DBに登録されているのを確認する。</p>
     </div>
-    <p>参考記事：<a href="https://codelikes.com/laravel-seeder/" rel="nofollow noopener" target="_blank">LaravelでSeederを使う方法！(初期データを登録する)</a></P> 
 
     <a href="{{ route('article') }}">記事一覧に戻る</a><br><br>
     <a href="{{ route('profile') }}">プロフィールに戻る</a> 
