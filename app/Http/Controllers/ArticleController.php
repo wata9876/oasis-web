@@ -23,41 +23,10 @@ class ArticleController extends Controller
      * Display a listing of the resource.
      * 
      */
-    public function show1(): View
+    public function show($id): View
     {
-        return view('article.show1');
-    }
-
-    /**
-     * Display a listing of the resource.
-     * 
-     */
-    public function show2(): View
-    {
-        $article = Article::getTitle(2);
-        return view('article.show2', ['article' => $article]);
-    }
-
-    /**
-     * Display a listing of the resource.
-     * 
-     */
-    public function show3(): View
-    {
-        $article = Article::getTitle(3);
-
-        return view('article.show3', ['article' => $article] );
-    }
-
-    /**
-     * Display a listing of the resource.
-     * 
-     */
-    public function show4(): View
-    {
-        $article = Article::getTitle(3);
-
-        return view('article.show3', ['article' => $article] );
+        $article = Article::getTitle($id);
+        return view('article.show'.$id, ['article' => $article]);
     }
 
     /**

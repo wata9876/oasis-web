@@ -27,11 +27,7 @@ Route::get('work', [PortfolioController::class, 'showWork'])->name('work');
 
 Route::get('article', [ArticleController::class, 'index'])->name('article');
 
-Route::get('show1', [ArticleController::class, 'show1'])->name('article.show1');
-Route::get('show2', [ArticleController::class, 'show2'])->name('article.show2');
-Route::get('show3', [ArticleController::class, 'show3'])->name('article.show3');
-Route::get('show4', [ArticleController::class, 'show4'])->name('article.show4');
-
+Route::get('show/{id}', [ArticleController::class, 'show'])->name('article.show');
 Route::get('contact', [MailController::class, 'create'])->name('mail.index');
 Route::post('contact', [MailController::class, 'confirm'])->name('mail.confirm');
 
