@@ -18,9 +18,9 @@ class ArticleSeeder extends Seeder
         //
         DB::table('articles')->insert([
             [
-                'title' => 'seederを使って初期データを登録する',
-                'url' => 'article.show3',
-                'content' => 'seederを使ってDBにデータを登録する手順をまとめました。',
+                'title' => 'Laravelでお問い合わせフォームを作成',
+                'url' => 'article.show4',
+                'content' => 'お問い合わせフォームを作成し、Gmailと連携が出来るように実装しました。デザインはtailblocksを使用しています。tailblocksはヘッダーや本文のレイアウトやお問い合わせフォームなどのデザインがテンプレートとして用意されており、気軽に利用出来るので便利です。今回はtailblocksのテンプレートを利用してお問い合わせフォームを作成しましたので、その使い方も含めてまとめました。',
             ],
             
         ]);

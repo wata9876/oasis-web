@@ -21,23 +21,6 @@ class AuthenticatedSessionController extends Controller
     }
 
     /**
-     * Display the login view.
-    */
-    public function index(Request $request)
-    {  
-        if (Auth::guard('members')->attempt($request->only(['email', 'password']))) {
-            return redirect()->route('user.dashboard')->with([
-                'login_msg' => 'ログインしました。',
-            ]);
-        }
-        //ログインできなかったときに元のページに戻る
-        return back()->withErrors([
-            'login' => ['ログインに失敗しました'],
-        ]);
-    }
-
-
-    /**
      * Handle an incoming authentication request.
      */
     public function store(LoginRequest $request): RedirectResponse

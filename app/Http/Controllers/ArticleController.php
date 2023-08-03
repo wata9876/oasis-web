@@ -50,6 +50,17 @@ class ArticleController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     * 
+     */
+    public function show4(): View
+    {
+        $article = Article::getTitle(3);
+
+        return view('article.show3', ['article' => $article] );
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
