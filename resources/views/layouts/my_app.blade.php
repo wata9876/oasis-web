@@ -16,7 +16,7 @@
         <ul id="global-menu">
             <li><a href="{{ route('profile') }}">プロフィール</a></li>
             <li><a href="{{ route('article') }}">ポートフォリオ</a></li>
-            <li><a href="#">お問い合わせ</a></li>
+            <li><a href="{{ route('mail.index')}}">お問い合わせ</a></li>
         </ul>
     </header>
 

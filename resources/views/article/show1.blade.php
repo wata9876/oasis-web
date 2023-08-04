@@ -9,8 +9,8 @@
 @endsection
 
 @section('content')
-<h1 class="h1-bottom">laravel9 sailを使って環境構築を行った際の備忘録</h1>
-    <h2 class="title-bottom">概要</h2>
+<h1 class="h1-bottom">{{ $article->title }}</h1>
+    <h2 class="title-bottom">はじめに</h2>
     <div class="content-bottom">
         <p>laravel9を学習してスキルアップをしたかったので、今回はsailを使った環境構築を行いました。その際の手順を備忘録として記載しています。</p><br>
         <p>参考記事：<a href="https://qiita.com/hinako_n/items/45a7232b0b0ed16bffc8" rel="nofollow noopener" target="_blank">Laravelsailを使ってLaravel9の環境構築を行う</a></p>
