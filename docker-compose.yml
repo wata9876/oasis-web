@@ -63,7 +63,6 @@ services:
             - 8080:80
         volumes:
             - /sessions
-
     redis:
         image: 'redis:alpine'
         ports:
@@ -106,13 +105,13 @@ services:
                 - 'http://localhost:9000/minio/health/live'
             retries: 3
             timeout: 5s
-networks:
-    sail:
-        driver: bridge
-volumes:
-    sail-mysql:
-        driver: local
-    sail-redis:
-        driver: local
-    sail-minio:
-        driver: local
+    networks:
+        sail:
+            driver: bridge
+    volumes:
+        sail-mysql:
+            driver: local
+        sail-redis:
+            driver: local
+        sail-minio:
+            driver: local

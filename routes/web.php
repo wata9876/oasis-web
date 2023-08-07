@@ -30,6 +30,7 @@ Route::get('article', [ArticleController::class, 'index'])->name('article');
 Route::get('show/{id}', [ArticleController::class, 'show'])->name('article.show');
 Route::get('contact', [MailController::class, 'create'])->name('mail.index');
 Route::post('contact', [MailController::class, 'confirm'])->name('mail.confirm');
+Route::post('send', [MailController::class, 'send'])->name('mail.send');
 
 
 Route::get('/dashboard', function () {

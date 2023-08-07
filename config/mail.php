@@ -115,4 +115,5 @@ return [
         ],
     ],
 
+    'email_admin' => env('MAIL_USERNAME'),
 ];

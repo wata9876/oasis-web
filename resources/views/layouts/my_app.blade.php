@@ -15,7 +15,7 @@
         <h1>{{config('app.name')}}</h1>
         <ul id="global-menu">
             <li><a href="{{ route('profile') }}">プロフィール</a></li>
-            <li><a href="{{ route('article') }}">ポートフォリオ</a></li>
+            <li><a href="{{ route('article') }}">記事一覧</a></li>
             <li><a href="{{ route('mail.index')}}">お問い合わせ</a></li>
         </ul>
     </header>
