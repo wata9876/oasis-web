@@ -10,8 +10,7 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@3.0.2/destyle.min.css">
-    <link rel="stylesheet" href="css/blog_style.css">
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/css/blog_style.css', 'resources/js/app.js'])

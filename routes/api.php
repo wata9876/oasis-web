@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Api\NovelController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,4 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::middleware(['middleware' => 'api'])->group(function () {
+    Route::controller(NovelController::class)->group(function () {
+        Route::post('/novels/create', 'create');
+        Route::get('novels', 'index');
+        Route::get('/novels/{novel}', 'show');
+        Route::patch('/novels/update/{novel}', 'update');
+        Route::delete('/novels/{novel}', 'destroy');
+    });
 });

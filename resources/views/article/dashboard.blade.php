@@ -1,25 +1,28 @@
-@extends('layouts.blog_app')
-
-@section('title')
-    <title>記事一覧 | {{config('app.name')}}</title>
-@endsection
-
-@section('header')
-    <h1 class="title">記事一覧</h1>
-@endsection
+@extends('layouts.my_app')
 
 @section('content')
-    @foreach ($articles as $article)
-        <ul class="dateList">
-            <li class="dateList__item">{{$article->created_at}}</li>
-        </ul>
-        <h2 class="heading heading-secondary">{{ $article->title }}</h2>
-        <p class="phrase phrase-secondary">
-        {{$article->content}}    
-        </p>
-        <div class="btn btn-right">
-            <a class="btn__link btn__link-normal" href="{{ route('article.show', $article->id) }}">続きを読む</a>
-        </div><br>
-    @endforeach
-    <a href="{{ route('profile') }}">プロフィールに戻る</a>    
+<section class="text-gray-600 body-font overflow-hidden">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="-my-8 divide-y-2 divide-gray-100">
+      @foreach ($articles as $article)
+        <div class="py-8 flex flex-wrap md:flex-nowrap">
+            <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+            <span class="font-semibold title-font text-gray-700">{{$article->title}}</span>
+            <span class="mt-1 text-gray-500 text-sm">{{$article->created_at}}</span>
+            </div>
+            <div class="md:flex-grow">
+            <h2 class="text-2xl font-medium text-gray-900 title-font mb-2"></h2>
+            <p class="leading-relaxed">{{$article->content}}</p>
+            <a href="{{ route('article.show', $article->id) }}" class="text-blue-500 inline-flex items-center mt-4">記事を読む
+                <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="M12 5l7 7-7 7"></path>
+                </svg>
+            </a>
+            </div>
+        </div>
+      @endforeach
+    </div>
+  </div>
+</section>
 @endsection

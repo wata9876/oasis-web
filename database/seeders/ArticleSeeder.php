@@ -19,13 +19,12 @@ class ArticleSeeder extends Seeder
         //
         DB::table('articles')->insert([
             [
-                'title' => 'Laravelでお問い合わせフォームを作成②',
-                'url' => 'article.show5',
-                'content' => '前回はtailblocksを使用してお問い合わせフォームのページ作成とバリデーションを実装しました。今回はサクラサーバーのメールアカウントを作成し、送信後にメールが送られる所までを記載しました。',
+                'title' => '',
+                'url' => 'article.show6',
+                'content' => '小説を投稿するためのAPIを作成してみました。Postmanを使って動作確認を行なっています',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
-            
         ]);
     }
 }
