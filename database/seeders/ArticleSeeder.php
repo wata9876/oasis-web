@@ -19,9 +19,9 @@ class ArticleSeeder extends Seeder
         //
         DB::table('articles')->insert([
             [
-                'title' => '',
-                'url' => 'article.show6',
-                'content' => '小説を投稿するためのAPIを作成してみました。Postmanを使って動作確認を行なっています',
+                'title' => 'python3　APIにGETリクエストするやり方',
+                'url' => 'article.show8',
+                'content' => 'Python3で前回Laravelで作成した小説登録APIをPythonから呼び出してみるやり方を実装しました。',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],

@@ -159,6 +159,8 @@ return [
         'email' => 'メールアドレス',
         'title' => '件名',
         'message' => '本文',
+        'password' => 'パスワード',
+        'password_confirmation' => '確認用パスワード'
     ],
 
 ];

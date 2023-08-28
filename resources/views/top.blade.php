@@ -10,7 +10,7 @@
         <h2>ようこそ、ポートフォリオへ</h2>
         <p>
             当サイトでは私の作品を掲載しています。<br>
-            仕事のご依頼や当サイトに関するお問い合わせは<a href="#" class="contact-btn">contact</a>よりご連絡ください。
+            仕事のご依頼や当サイトに関するお問い合わせは<a href="{{ route('mail.index')}}" class="contact-btn">contact</a>よりご連絡ください。
         </p>
     </main>
 @endsection

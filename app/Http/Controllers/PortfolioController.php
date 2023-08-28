@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use App\Models\Article;
 
 class PortfolioController extends Controller
 {
@@ -21,7 +22,8 @@ class PortfolioController extends Controller
     public function showProfile()
     {
         //
-        return view('profile');
+        $articles = Article::take(5)->latest()->get();
+        return view('profile', compact('articles'));
     }
 
     /**
