@@ -16,6 +16,7 @@ class ArticleController extends Controller
     {
         //
         $articles = Article::all();
+       
         return view('article.dashboard', compact('articles'));
     }
 

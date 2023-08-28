@@ -22,7 +22,7 @@ class PortfolioController extends Controller
     public function showProfile()
     {
         //
-        $articles = Article::take(5)->latest()->get();
+        $articles = Article::take(4)->latest()->get();
         return view('profile', compact('articles'));
     }
 
